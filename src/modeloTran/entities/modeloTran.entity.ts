@@ -1,5 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Trancista } from '../../trancista/entities/trancista.entity';
 
 @Entity({ name: 'tb_modelo_tran' })
 export class ModeloTran {
@@ -19,4 +20,9 @@ export class ModeloTran {
 
   @Column({ length: 5000 })
   descricao: string;
+
+  @ManyToOne(() => Trancista, (trancista) => trancista.modeloTran, {
+    onDelete: 'CASCADE',
+  })
+  trancista: Trancista;
 }
