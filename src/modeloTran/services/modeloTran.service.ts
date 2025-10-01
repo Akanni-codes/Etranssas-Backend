@@ -12,12 +12,13 @@ export class ModeloTranService {
   ) {}
 
   async findAll(): Promise<ModeloTran[]> {
-    return this.modeloTranRepository.find();
+    return this.modeloTranRepository.find({ relations: { trancista: true } });
   }
 
   async findById(id: number): Promise<ModeloTran> {
     const modeloTran = await this.modeloTranRepository.findOne({
       where: { id },
+      relations: { trancista: true },
     });
 
     if (!modeloTran) {
@@ -35,6 +36,7 @@ export class ModeloTranService {
       where: {
         nome: ILike(`%${nome}%`),
       },
+      relations: { trancista: true },
     });
   }
 
