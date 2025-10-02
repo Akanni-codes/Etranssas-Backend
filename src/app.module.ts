@@ -5,6 +5,8 @@ import { ModeloTranModule } from './modeloTran/modeloTran.module';
 import { AutthModule } from './auth/auth.module';
 import { Trancista } from './trancista/entities/trancista.entity';
 import { TrancistaModule } from './trancista/trancista.module';
+import { Cliente } from './cliente/entities/cliente.entity';
+import { ClienteModule } from './cliente/cliente.module';
 
 @Module({
   imports: [
@@ -15,12 +17,13 @@ import { TrancistaModule } from './trancista/trancista.module';
       username: 'root',
       password: 'root',
       database: 'db_etrancas',
-      entities: [ModeloTran, Trancista],
+      entities: [ModeloTran, Trancista, Cliente],
       synchronize: true,
     }),
     ModeloTranModule,
     AutthModule,
     TrancistaModule,
+    ClienteModule,
   ],
   controllers: [],
   providers: [],

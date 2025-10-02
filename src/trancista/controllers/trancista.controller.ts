@@ -30,13 +30,13 @@ export class TrancistaController {
 
   @Post('/cadastrar')
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() Trancista: Trancista): Promise<Trancista> {
-    return this.trancistaService.create(Trancista);
+  async create(@Body() trancista: Trancista): Promise<Trancista> {
+    return this.trancistaService.create(trancista);
   }
 
   @Put('/atualizar')
   @HttpCode(HttpStatus.CREATED)
-  async update(@Body() Trancista: Trancista): Promise<Trancista> {
-    return this.trancistaService.update(Trancista);
+  async update(@Body() trancista: Trancista): Promise<Trancista> {
+    return this.trancistaService.update(trancista);
   }
 }
