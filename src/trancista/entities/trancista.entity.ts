@@ -27,6 +27,9 @@ export class Trancista {
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
   valorTransporte: number;
 
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
+  valorMaterial: number;
+
   @OneToMany(() => ModeloTran, (modeloTran) => modeloTran.trancista)
   modeloTran: ModeloTran[];
 }
