@@ -47,6 +47,12 @@ export class AgendamentoService {
 
   async update(agendamento: Agendamento): Promise<Agendamento> {
     await this.findById(agendamento.id);
+
+    agendamento.valorTotal = await this.calcularValorTotal(
+      agendamento.modeloTran.id,
+      agendamento.trancista.id,
+      agendamento.materialIncluso,
+    );
     return await this.agendamentoRepository.save(agendamento);
   }
 
