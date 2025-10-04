@@ -25,6 +25,7 @@ export class TrancistaService {
   async findById(id: number): Promise<Trancista> {
     const trancista = await this.trancistaRepository.findOne({
       where: { id },
+      relations: { agendamentos: true, modeloTran: true },
     });
     if (!trancista) {
       throw new HttpException('Trancista não encontrade', HttpStatus.NOT_FOUND);

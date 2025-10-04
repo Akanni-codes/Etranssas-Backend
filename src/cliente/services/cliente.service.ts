@@ -25,6 +25,7 @@ export class ClienteService {
   async findById(id: number): Promise<Cliente> {
     const cliente = await this.clienteRepository.findOne({
       where: { id },
+      relations: { agendamentos: true },
     });
     if (!cliente) {
       throw new HttpException('Usuario não encontrade', HttpStatus.NOT_FOUND);

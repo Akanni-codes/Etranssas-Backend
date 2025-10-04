@@ -4,6 +4,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Param,
   ParseIntPipe,
   Post,
   Put,
@@ -23,7 +24,7 @@ export class AgendamentoController {
 
   @Get('/:id')
   @HttpCode(HttpStatus.OK)
-  finId(@Body('id', ParseIntPipe) id: number): Promise<Agendamento> {
+  finId(@Param('id', ParseIntPipe) id: number): Promise<Agendamento> {
     return this.agendamentoService.findById(id);
   }
 

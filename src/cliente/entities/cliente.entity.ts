@@ -11,6 +11,10 @@ export class Cliente {
   @Column({ length: 255, nullable: false })
   nome: string;
 
+  @IsNotEmpty()
+  @Column({ length: 5000, nullable: false })
+  localizacao: string;
+
   @IsEmail()
   @IsNotEmpty()
   @Column({ length: 255, nullable: false })
@@ -21,7 +25,7 @@ export class Cliente {
   @Column({ length: 255, nullable: false })
   senha: string;
 
-  @Column({ length: 5000 })
+  @Column({ length: 5000, nullable: true })
   foto: string;
 
   @OneToMany(() => Agendamento, (agendamento) => agendamento.cliente)

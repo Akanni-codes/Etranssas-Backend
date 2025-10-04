@@ -17,19 +17,21 @@ export class Trancista {
   @Column({ length: 255, nullable: false })
   email: string;
 
+  @IsNotEmpty()
+  @Column({ length: 5000, nullable: false })
+  regiaoAtuação: string;
+
   @MinLength(8)
   @IsNotEmpty()
   @Column({ length: 255, nullable: false })
   senha: string;
 
-  @Column({ length: 5000 })
+  @Column({ length: 5000, nullable: true })
   foto: string;
 
+  @IsNotEmpty()
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
   valorTransporte: number;
-
-  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
-  valorMaterial: number;
 
   @OneToMany(() => ModeloTran, (modeloTran) => modeloTran.trancista)
   modeloTran: ModeloTran[];

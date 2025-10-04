@@ -18,14 +18,19 @@ export class ModeloTran {
   @Column({ length: 255, nullable: false })
   nome: string;
 
+  @IsNotEmpty()
   @Column({ length: 5000 })
   foto: string;
+
+  @IsNotEmpty()
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
+  taxaMaterial: number;
 
   @IsNotEmpty()
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
   preco: number;
 
-  @Column({ length: 5000 })
+  @Column({ length: 5000, nullable: true })
   descricao: string;
 
   @ManyToOne(() => Trancista, (trancista) => trancista.modeloTran, {

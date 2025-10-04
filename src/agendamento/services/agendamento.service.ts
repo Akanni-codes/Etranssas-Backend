@@ -70,7 +70,7 @@ export class AgendamentoService {
     };
 
     const preco = toNumber(modelo.preco);
-    const valorMaterial = toNumber(trancista.valorMaterial);
+    const valorMaterial = toNumber(modelo.taxaMaterial);
     const valorTransporte = toNumber(trancista.valorTransporte);
 
     let total = preco + valorTransporte;

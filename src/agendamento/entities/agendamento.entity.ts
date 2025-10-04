@@ -15,6 +15,15 @@ export class Agendamento {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ManyToOne(() => Trancista, (trancista) => trancista.agendamentos)
+  trancista: Trancista;
+
+  @ManyToOne(() => Cliente, (cliente) => cliente.agendamentos)
+  cliente: Cliente;
+
+  @ManyToOne(() => ModeloTran, (modeloTran) => modeloTran.agendamentos)
+  modeloTran: ModeloTran;
+
   @IsNotEmpty()
   @Column({ length: 5000, nullable: false })
   endereco: string;
@@ -30,22 +39,14 @@ export class Agendamento {
   @Column({ type: 'boolean', default: true })
   materialIncluso: boolean;
 
-  @IsNotEmpty()
+  @Column({ type: 'boolean', default: false })
+  confirmado: boolean;
+
   @Column({ type: 'boolean', default: false })
   sinalPago: boolean;
 
-  @IsNotEmpty()
   @Column({ type: 'boolean', default: false })
   finalizado: boolean;
-
-  @ManyToOne(() => Trancista, (trancista) => trancista.agendamentos)
-  trancista: Trancista;
-
-  @ManyToOne(() => Cliente, (cliente) => cliente.agendamentos)
-  cliente: Cliente;
-
-  @ManyToOne(() => ModeloTran, (modeloTran) => modeloTran.agendamentos)
-  modeloTran: ModeloTran;
 
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
   valorTotal: number;
