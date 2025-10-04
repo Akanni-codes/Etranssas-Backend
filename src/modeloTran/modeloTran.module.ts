@@ -8,6 +8,6 @@ import { ModeloTranController } from './controllers/modeloTran.controller';
   imports: [TypeOrmModule.forFeature([ModeloTran])],
   providers: [ModeloTranService],
   controllers: [ModeloTranController],
-  exports: [],
+  exports: [ModeloTranService],
 })
 export class ModeloTranModule {}

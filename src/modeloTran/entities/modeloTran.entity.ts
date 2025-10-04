@@ -1,6 +1,13 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Trancista } from '../../trancista/entities/trancista.entity';
+import { Agendamento } from '../../agendamento/entities/agendamento.entity';
 
 @Entity({ name: 'tb_modelo_tran' })
 export class ModeloTran {
@@ -25,4 +32,7 @@ export class ModeloTran {
     onDelete: 'CASCADE',
   })
   trancista: Trancista;
+
+  @OneToMany(() => Agendamento, (agendamento) => agendamento.modeloTran)
+  agendamentos: Agendamento[];
 }
