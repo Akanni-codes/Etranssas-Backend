@@ -19,8 +19,8 @@ export class ModeloTran {
   nome: string;
 
   @IsNotEmpty()
-  @Column({ length: 5000 })
-  foto: string;
+  @Column({ type: 'simple-array', nullable: true })
+  foto: string[];
 
   @IsNotEmpty()
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
